@@ -26,17 +26,9 @@ export default function Acoes() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="min-w-[75%]">
-                {acoes ? <ul className="grid grid-cols divide-y divide-neutral-200 relative overflow-x-auto border rounded-md p-4 shadow-md">
-                    <div className="flex flex-row justify-around text-lg font-bold">
-                        <p className="px-8 pt-1 pb-3">Nome</p>
-                        <p className="px-8 pt-1 pb-3">Setor</p>
-                    </div>
-                    {acoes.map(acao => (
-                        <li key={acao.id} >
-                            <AcaoTabela acao={acao} />
-                        </li>
-                    ))}
-                </ul> : <p>Carregando...</p>}
+                {acoes ?
+                    <AcaoTabela acoes={acoes} />
+                    : <p>Carregando...</p>}
             </div>
         </main>
     );
