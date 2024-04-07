@@ -65,7 +65,7 @@ const AcaoTabela: React.FC<TabelaProps> = ({ acoes }) => {
             >
                 <TableHeader>
                     <TableColumn
-                        className="px-4 py-2 font-semibold text-sm text-gray-800 cursor-pointer"
+                        className="w-[30%] px-8 py-2 font-semibold text-sm text-gray-800 cursor-pointer"
                         onClick={() => handleSort("ticket")}
                     >
                         TICKET
@@ -74,7 +74,7 @@ const AcaoTabela: React.FC<TabelaProps> = ({ acoes }) => {
                         )}
                     </TableColumn>
                     <TableColumn
-                        className="px-4 py-2 font-semibold text-sm text-gray-800 cursor-pointer"
+                        className="w-[80%] px-8 py-2 font-semibold text-sm text-gray-800 cursor-pointer"
                         onClick={() => handleSort("name")}
                     >
                         NOME
@@ -90,8 +90,8 @@ const AcaoTabela: React.FC<TabelaProps> = ({ acoes }) => {
                 >
                     {(acao) => (
                         <TableRow key={acao.id} className="hover:bg-neutral-200 text-gray-700">
-                            <TableCell className="px-4 py-2 text-sm">{acao.ticket}</TableCell>
-                            <TableCell className="px-4 py-2 text-sm">{acao.name}</TableCell>
+                            <TableCell className="w-[30%] px-4 py-2 text-sm">{acao.ticket}</TableCell>
+                            <TableCell className="w-[80%] px-4 py-2 text-sm">{acao.name}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>
