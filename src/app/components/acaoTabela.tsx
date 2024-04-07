@@ -29,8 +29,8 @@ const AcaoTabela: React.FC<TabelaProps> = ({ acoes }) => {
             >
                 {(acao) => (
                     <TableRow key={acao.id} className="hover:bg-neutral-200 text-gray-700">
+                        <TableCell className="px-4 py-2 text-sm">{acao.ticket}</TableCell>
                         <TableCell className="px-4 py-2 text-sm">{acao.name}</TableCell>
-                        <TableCell className="px-4 py-2 text-sm">{acao.setor}</TableCell>
                     </TableRow>
                 )}
             </TableBody>
