@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from 'react';
 import { acaoType } from '../types/acao';
+import AcaoTabela from "../components/acaoTabela";
 import axios from 'axios';
 
 export default function Acoes() {
@@ -29,17 +30,14 @@ export default function Acoes() {
                     <h1 className="text-4xl font-bold">Bem-vindo ao Predict Invest</h1>
                     <p className="text-lg mt-4">Acompanhe seus investimentos</p>
                 </div>
-                {acoes ? <ul>
+                {acoes ? <ul className="grid grid-cols divide-y divide-neutral-200 relative overflow-x-auto border rounded-md p-4 shadow-md">
+                    <div className="flex flex-row justify-around text-lg font-bold">
+                        <p className="px-8 pt-1 pb-3">Nome</p>
+                        <p className="px-8 pt-1 pb-3">Setor</p>
+                    </div>
                     {acoes.map(acao => (
-                        <li key={acao.id} className="flex flex-row">
-                            <div className="flex flex-col items-center justify-center">
-                                <strong>Nome</strong>
-                                {acao.name}
-                            </div>
-                            <div className="flex flex-col items-center justify-center">
-                                <strong>Setor</strong>
-                                {acao.setor}
-                            </div>
+                        <li key={acao.id} >
+                            <AcaoTabela acao={acao} />
                         </li>
                     ))}
                 </ul> : <p>Carregando...</p>}
