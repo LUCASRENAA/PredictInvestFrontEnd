@@ -25,11 +25,7 @@ export default function Acoes() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div>
-                <div className="flex flex-col items-center">
-                    <h1 className="text-4xl font-bold">Bem-vindo ao Predict Invest</h1>
-                    <p className="text-lg mt-4">Acompanhe seus investimentos</p>
-                </div>
+            <div className="min-w-[75%]">
                 {acoes ? <ul className="grid grid-cols divide-y divide-neutral-200 relative overflow-x-auto border rounded-md p-4 shadow-md">
                     <div className="flex flex-row justify-around text-lg font-bold">
                         <p className="px-8 pt-1 pb-3">Nome</p>
