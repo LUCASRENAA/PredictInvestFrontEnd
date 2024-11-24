@@ -23,16 +23,23 @@ jobs:
       - name: Install dependencies
         run: npm install  
         
-      - name: Run Trivy SCA
+      - name: Run Trivy SCA - Libraries
         uses: aquasecurity/trivy-action@0.28.0
         with:
             scan-type: 'fs'
             scan-ref: 'package-lock.json'
-            scanners: 'vuln,license'
+            scanners: 'vuln'    
+
+      - name: Run Trivy SCA - Licenses
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+            scan-type: 'fs'
+            scan-ref: './'
+            scanners: 'license'
+
       - name: Run Trivy SAST 
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'  # Modo de escaneamento do sistema de arquivos
           scan-ref: './'  # Diretório de escaneamento (normalmente, a raiz do repositório)
           scanners: 'secret,misconfig'  # Especificando os scanners a serem usados
-          args: '--debug'  # Adicionando a flag de depuração para maior verbosidade
