@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' 
+          node-version: '18' 
 
       
       - name: Install dependencies
@@ -29,5 +29,5 @@ jobs:
         uses: aquasecurity/trivy-action@0.20.0
         with:
             scan-type: 'fs'
-            scan-ref: '.'
+            scan-ref: 'package-lock.json'
       
