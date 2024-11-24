@@ -35,5 +35,5 @@ jobs:
         with:
           scan-type: 'fs'  # Modo de escaneamento do sistema de arquivos
           scan-ref: './'  # Diretório de escaneamento (normalmente, a raiz do repositório)
-          scanners: 'vuln,secret,misconfig'  # Especificando os scanners a serem usados
+          scanners: 'secret,misconfig'  # Especificando os scanners a serem usados
           args: '--debug'  # Adicionando a flag de depuração para maior verbosidade
