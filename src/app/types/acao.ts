@@ -1,5 +1,5 @@
 export type acaoType = {
   id: number;
-  ticket: string;
+  ticket_id: string;
   name: string;
 };
