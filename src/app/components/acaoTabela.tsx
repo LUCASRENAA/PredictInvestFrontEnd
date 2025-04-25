@@ -95,7 +95,7 @@ const AcaoTabela: React.FC<TabelaProps> = ({ acoes }) => {
                             className="hover:bg-blue-50 text-gray-700 transition-colors"
                         >
                             <TableCell className="w-[30%] px-4 py-2 text-sm font-medium text-gray-900">
-                            <Link href={`/acoes/`}>{acao.name}</Link>
+                            <Link href={`/acoes/`}>{acao.ticket_id}</Link>
                             </TableCell>
                             <TableCell className="w-[70%] px-4 py-2 text-sm text-gray-700">
                                 {acao.name}
