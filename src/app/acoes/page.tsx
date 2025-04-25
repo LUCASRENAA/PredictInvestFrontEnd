@@ -24,8 +24,8 @@ export default function Acoes() {
     }, []);
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="min-w-[75%]">
+        <main className="flex min-h-screen flex-col justify-between py-12 px-20">
+            <div className="min-w-[90%]">
                 {acoes ?
                     <AcaoTabela acoes={acoes} />
                     : <p>Carregando...</p>}

@@ -6,7 +6,41 @@ interface IndicadorDetalheProps {
   indicador: indicadoresType;
 }
 
-const IndicadorDetalhe: React.FC<IndicadorDetalheProps> = ({ indicador }) => {
+
+
+const IndicadorDetalhe: React.FC<IndicadorDetalheProps> = ({ indicador
+
+  
+ }) => {
+  const valorAtual = indicador.valor_atual; // Exemplo de valor atual da ação, você pode puxar isso dinamicamente.
+  const upsideBazin = parseFloat(indicador.bazin) || 0;  // Converte para número ou 0 se não for válido
+  const valorGraham = parseFloat(indicador.grahan) || 0; // Converte para número ou 0 se não for válido
+
+  // Cálculo do valor justo com base no upside de Bazin (positivo ou negativo)
+  const valorJustoBazin = valorAtual * (1 + upsideBazin / 100);
+
+  // Lógica para determinar a cor do valor justo Bazin
+  let corValorJustoBazin = 'text-white'; // cor padrão
+  if (upsideBazin > 0) {
+    corValorJustoBazin = 'text-green-500'; // verde se o valor justo Bazin for maior que o valor atual
+  } else if (upsideBazin < 0) {
+    corValorJustoBazin = 'text-red-500'; // vermelho se o valor justo Bazin for menor que o valor atual
+  }
+
+  // Cálculo do Valor Intrínseco de Graham
+
+  // Cálculo do preço de Graham baseado no valor de upside
+  const valorJustoGraham = valorAtual * (1 + valorGraham / 100);
+
+  // Lógica para determinar a cor do valor Graham
+  let corValorGraham = 'text-white'; // cor padrão
+  if (valorGraham > 0) {
+    corValorGraham = 'text-green-500'; // verde se o valor de Graham for maior que o valor atual
+  } else if (valorGraham < 0) {
+    corValorGraham = 'text-red-500'; // vermelho se o valor de Graham for menor que o valor atual
+  }
+
+  
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold text-gray-800">{indicador.name}</h2>
@@ -159,18 +193,33 @@ const IndicadorDetalhe: React.FC<IndicadorDetalheProps> = ({ indicador }) => {
 
         {/* Valuation Teórico */}
         <div className="bg-white p-4 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold text-orange-600">📐 Valuation Teórico</h3>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-gray-800">Valor Intrínseco (Graham)</span>
-              <span className="text-gray-800">{indicador.grahan}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-800">Valuation Bazin</span>
-              <span className="text-gray-800">{indicador.bazin}</span>
-            </div>
-          </div>
+      <h3 className="text-lg font-semibold text-orange-600">📐 Valuation Teórico</h3>
+      <div className="space-y-2">
+        {/* Valor Intrínseco de Graham */}
+        <div className={`flex justify-between ${corValorGraham}`}>
+          <span className="text-gray-800">Valor Intrínseco (Graham)</span>
+          <span className="text-gray-800">{valorGraham.toFixed(2)}%</span>
         </div>
+
+        {/* Valuation Bazin */}
+        <div className={`flex justify-between ${corValorJustoBazin}`}>
+          <span className="text-gray-800">Valuation Bazin</span>
+          <span className="text-gray-800">{upsideBazin.toFixed(2)}%</span>
+        </div>
+
+        {/* Exibição do valor justo Bazin */}
+        <div className={`flex justify-between ${corValorJustoBazin}`}>
+          <span className="text-gray-800">Valor Justo Bazin</span>
+          <span className="text-gray-800">{valorJustoBazin.toFixed(2)}</span>
+        </div>
+
+        {/* Exibição do valor justo Graham */}
+        <div className={`flex justify-between ${corValorGraham}`}>
+          <span className="text-gray-800">Valor Justo Graham</span>
+          <span className="text-gray-800">{valorJustoGraham.toFixed(2)}</span>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
   );
